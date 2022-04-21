@@ -109,7 +109,7 @@ insert into "funcionario" (nome_funcionario, cpf_funcionario, salario) values('D
 
 --modificação dos atributos
 alter table telefone rename to telefone_cliente;
-alter table cliente add CONSTRAINT "FK_cliente.codigo_telefone" FOREIGN KEY ("codigo_telefone") REFERENCES "telefone_cliente"("codigo_telefone");
+alter table cliente add CONSTRAINT "FK_cliente.codigo_telefone" FOREIGN KEY ("codigo_telefone") REFERENCES "telefone_cliente"("codigo_telefone")  on delete cascade on update cascade;
 alter table telefone_cliente rename column telefone_principal to ddd_principal;
 alter table telefone_cliente rename column telefone_secundario to telefone_principal;
 alter table telefone_cliente add column ddd_secundario integer; 
