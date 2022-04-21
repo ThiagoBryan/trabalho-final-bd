@@ -22,6 +22,8 @@ CREATE TABLE "pedido" (
   CONSTRAINT "FK_pedido.codigo_cliente"
     FOREIGN KEY ("codigo_cliente")
       REFERENCES "cliente"("codigo_cliente")
+        on delete cascade
+          on update cascade
 );
 
 CREATE TABLE "telefone" (
@@ -83,17 +85,17 @@ alter table item_compra add column codigo_pedido integer not null;
  
 --definindo chaves estrangeiras
 alter table produto add CONSTRAINT "FK_produto.codigo_funcionario" FOREIGN KEY ("codigo_funcionario")
- REFERENCES "funcionario"("codigo_funcionario"); 
+ REFERENCES "funcionario"("codigo_funcionario") on delete cascade on update cascade; 
 alter table cliente add CONSTRAINT "FK_cliente.codigo_endereco" FOREIGN KEY ("codigo_endereco")
- REFERENCES "endereco_cliente"("codigo_endereco"); 
+ REFERENCES "endereco_cliente"("codigo_endereco")  on delete cascade on update cascade; 
 
 alter table produto add CONSTRAINT "FK_categoria.codigo_codigo_categoria" FOREIGN KEY ("codigo_categoria")
- REFERENCES "categoria"("codigo_categoria");
+ REFERENCES "categoria"("codigo_categoria")  on delete cascade on update cascade;
 
 alter table item_compra add CONSTRAINT "FK_item_compra.codigo_produto" FOREIGN KEY ("codigo_produto")
- REFERENCES "produto"("codigo_produto"); 
+ REFERENCES "produto"("codigo_produto")  on delete cascade on update cascade; 
 alter table item_compra add CONSTRAINT "FK_item_compra.codigo_pedido" FOREIGN KEY ("codigo_pedido")
- REFERENCES "pedido"("codigo_pedido"); 
+ REFERENCES "pedido"("codigo_pedido")  on delete cascade on update cascade; 
 
 --inserindo dados dos funcionários
 insert into "funcionario" (nome_funcionario, cpf_funcionario, salario) values('Thiago', 99988877700, 2000);
